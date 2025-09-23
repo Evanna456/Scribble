@@ -1,0 +1,6 @@
+# Dependency directories
+vcpkg_installed/
+build/
+
+# VS Settings
+.vscode/
