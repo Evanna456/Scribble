@@ -4,7 +4,7 @@ list(APPEND CMAKE_MODULE_PATH
   "${CMAKE_CURRENT_SOURCE_DIR}/cmake"
 )
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_C_STANDARD 11)
 
 set(CMAKE_CXX_COMPILER "C://MinGW/bin/g++.exe")
 
@@ -18,6 +18,7 @@ project(Scribble)
 
 find_package(fmt CONFIG REQUIRED)
 
-add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
+add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/src/main.c)
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg_installed/x64-mingw-dynamic/include")
+
 target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt-header-only)
