@@ -1,4 +1,5 @@
-enum theme {
+enum theme
+{
   THEME_BLACK,
   THEME_WHITE,
   THEME_RED,
@@ -9,12 +10,14 @@ enum theme {
   THEME_CATPPUCCIN_FRAPPE,
   THEME_CATPPUCCIN_MACCHIATO,
   THEME_CATPPUCCIN_MOCHA
-  
+
 };
 
-static void set_style(struct nk_context *ctx, enum theme theme) {
+static void set_style(struct nk_context *ctx, enum theme theme)
+{
   struct nk_color table[NK_COLOR_COUNT];
-  if (theme == THEME_WHITE) {
+  if (theme == THEME_WHITE)
+  {
     table[NK_COLOR_TEXT] = nk_rgba(70, 70, 70, 255);
     table[NK_COLOR_WINDOW] = nk_rgba(175, 175, 175, 255);
     table[NK_COLOR_HEADER] = nk_rgba(175, 175, 175, 255);
@@ -48,7 +51,9 @@ static void set_style(struct nk_context *ctx, enum theme theme) {
     table[NK_COLOR_KNOB_CURSOR_HOVER] = table[NK_COLOR_SLIDER_CURSOR_HOVER];
     table[NK_COLOR_KNOB_CURSOR_ACTIVE] = table[NK_COLOR_SLIDER_CURSOR_ACTIVE];
     nk_style_from_table(ctx, table);
-  } else if (theme == THEME_RED) {
+  }
+  else if (theme == THEME_RED)
+  {
     table[NK_COLOR_TEXT] = nk_rgba(190, 190, 190, 255);
     table[NK_COLOR_WINDOW] = nk_rgba(30, 33, 40, 215);
     table[NK_COLOR_HEADER] = nk_rgba(181, 45, 69, 220);
@@ -82,7 +87,9 @@ static void set_style(struct nk_context *ctx, enum theme theme) {
     table[NK_COLOR_KNOB_CURSOR_HOVER] = table[NK_COLOR_SLIDER_CURSOR_HOVER];
     table[NK_COLOR_KNOB_CURSOR_ACTIVE] = table[NK_COLOR_SLIDER_CURSOR_ACTIVE];
     nk_style_from_table(ctx, table);
-  } else if (theme == THEME_BLUE) {
+  }
+  else if (theme == THEME_BLUE)
+  {
     table[NK_COLOR_TEXT] = nk_rgba(20, 20, 20, 255);
     table[NK_COLOR_WINDOW] = nk_rgba(202, 212, 214, 215);
     table[NK_COLOR_HEADER] = nk_rgba(137, 182, 224, 220);
@@ -116,7 +123,9 @@ static void set_style(struct nk_context *ctx, enum theme theme) {
     table[NK_COLOR_KNOB_CURSOR_HOVER] = table[NK_COLOR_SLIDER_CURSOR_HOVER];
     table[NK_COLOR_KNOB_CURSOR_ACTIVE] = table[NK_COLOR_SLIDER_CURSOR_ACTIVE];
     nk_style_from_table(ctx, table);
-  } else if (theme == THEME_DARK) {
+  }
+  else if (theme == THEME_DARK)
+  {
     table[NK_COLOR_TEXT] = nk_rgba(210, 210, 210, 255);
     table[NK_COLOR_WINDOW] = nk_rgba(57, 67, 71, 215);
     table[NK_COLOR_HEADER] = nk_rgba(51, 51, 56, 220);
@@ -150,7 +159,9 @@ static void set_style(struct nk_context *ctx, enum theme theme) {
     table[NK_COLOR_KNOB_CURSOR_HOVER] = table[NK_COLOR_SLIDER_CURSOR_HOVER];
     table[NK_COLOR_KNOB_CURSOR_ACTIVE] = table[NK_COLOR_SLIDER_CURSOR_ACTIVE];
     nk_style_from_table(ctx, table);
-  } else if (theme == THEME_DRACULA) {
+  }
+  else if (theme == THEME_DRACULA)
+  {
     struct nk_color background = nk_rgba(40, 42, 54, 255);
     struct nk_color currentline = nk_rgba(68, 71, 90, 255);
     struct nk_color foreground = nk_rgba(248, 248, 242, 255);
@@ -195,7 +206,9 @@ static void set_style(struct nk_context *ctx, enum theme theme) {
     table[NK_COLOR_KNOB_CURSOR_HOVER] = table[NK_COLOR_SLIDER_CURSOR_HOVER];
     table[NK_COLOR_KNOB_CURSOR_ACTIVE] = table[NK_COLOR_SLIDER_CURSOR_ACTIVE];
     nk_style_from_table(ctx, table);
-  } else if (theme == THEME_CATPPUCCIN_LATTE) {
+  }
+  else if (theme == THEME_CATPPUCCIN_LATTE)
+  {
     /*struct nk_color rosewater = nk_rgba(220, 138, 120, 255);*/
     /*struct nk_color flamingo = nk_rgba(221, 120, 120, 255);*/
     struct nk_color pink = nk_rgba(234, 118, 203, 255);
@@ -255,7 +268,9 @@ static void set_style(struct nk_context *ctx, enum theme theme) {
     table[NK_COLOR_KNOB_CURSOR_HOVER] = pink;
     table[NK_COLOR_KNOB_CURSOR_ACTIVE] = pink;
     nk_style_from_table(ctx, table);
-  } else if (theme == THEME_CATPPUCCIN_FRAPPE) {
+  }
+  else if (theme == THEME_CATPPUCCIN_FRAPPE)
+  {
     /*struct nk_color rosewater = nk_rgba(242, 213, 207, 255);*/
     /*struct nk_color flamingo = nk_rgba(238, 190, 190, 255);*/
     struct nk_color pink = nk_rgba(244, 184, 228, 255);
@@ -315,7 +330,9 @@ static void set_style(struct nk_context *ctx, enum theme theme) {
     table[NK_COLOR_KNOB_CURSOR_HOVER] = pink;
     table[NK_COLOR_KNOB_CURSOR_ACTIVE] = pink;
     nk_style_from_table(ctx, table);
-  } else if (theme == THEME_CATPPUCCIN_MACCHIATO) {
+  }
+  else if (theme == THEME_CATPPUCCIN_MACCHIATO)
+  {
     /*struct nk_color rosewater = nk_rgba(244, 219, 214, 255);*/
     /*struct nk_color flamingo = nk_rgba(240, 198, 198, 255);*/
     struct nk_color pink = nk_rgba(245, 189, 230, 255);
@@ -374,8 +391,10 @@ static void set_style(struct nk_context *ctx, enum theme theme) {
     table[NK_COLOR_KNOB_CURSOR] = pink;
     table[NK_COLOR_KNOB_CURSOR_HOVER] = pink;
     table[NK_COLOR_KNOB_CURSOR_ACTIVE] = pink;
-    nk_style_from_table(ctx, table); 
-  } else if (theme == THEME_CATPPUCCIN_MOCHA) {
+    nk_style_from_table(ctx, table);
+  }
+  else if (theme == THEME_CATPPUCCIN_MOCHA)
+  {
     /*struct nk_color rosewater = nk_rgba(245, 224, 220, 255);*/
     /*struct nk_color flamingo = nk_rgba(242, 205, 205, 255);*/
     struct nk_color pink = nk_rgba(245, 194, 231, 255);
@@ -434,8 +453,10 @@ static void set_style(struct nk_context *ctx, enum theme theme) {
     table[NK_COLOR_KNOB_CURSOR] = pink;
     table[NK_COLOR_KNOB_CURSOR_HOVER] = pink;
     table[NK_COLOR_KNOB_CURSOR_ACTIVE] = pink;
-    nk_style_from_table(ctx, table);   
-  } else {
+    nk_style_from_table(ctx, table);
+  }
+  else
+  {
     nk_style_default(ctx);
   }
 }

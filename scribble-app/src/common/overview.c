@@ -187,10 +187,10 @@ overview(struct nk_context *ctx)
             nk_checkbox_label(ctx, "Disable widgets", &disable_widgets);
             nk_tree_pop(ctx);
         }
-
         if (disable_widgets)
-            nk_widget_disable_begin(ctx);
-
+        {
+            // nk_widget_disable_begin(ctx);
+        }
         if (nk_tree_push(ctx, NK_TREE_TAB, "Widgets", NK_MINIMIZED))
         {
             enum options
@@ -241,13 +241,9 @@ overview(struct nk_context *ctx)
                 nk_button_symbol(ctx, NK_SYMBOL_RECT_SOLID);
                 nk_button_symbol(ctx, NK_SYMBOL_RECT_OUTLINE);
                 nk_button_symbol(ctx, NK_SYMBOL_TRIANGLE_UP);
-                nk_button_symbol(ctx, NK_SYMBOL_TRIANGLE_UP_OUTLINE);
                 nk_button_symbol(ctx, NK_SYMBOL_TRIANGLE_DOWN);
-                nk_button_symbol(ctx, NK_SYMBOL_TRIANGLE_DOWN_OUTLINE);
                 nk_button_symbol(ctx, NK_SYMBOL_TRIANGLE_LEFT);
-                nk_button_symbol(ctx, NK_SYMBOL_TRIANGLE_LEFT_OUTLINE);
                 nk_button_symbol(ctx, NK_SYMBOL_TRIANGLE_RIGHT);
-                nk_button_symbol(ctx, NK_SYMBOL_TRIANGLE_RIGHT_OUTLINE);
 
                 nk_layout_row_static(ctx, 30, 100, 2);
                 nk_button_symbol_label(ctx, NK_SYMBOL_TRIANGLE_LEFT, "prev", NK_TEXT_RIGHT);
@@ -279,19 +275,12 @@ overview(struct nk_context *ctx)
 
                 nk_layout_row_dynamic(ctx, 0, 1);
                 nk_checkbox_label(ctx, "CheckLeft TextLeft", &checkbox_left_text_left);
-                nk_checkbox_label_align(ctx, "CheckCenter TextRight", &checkbox_centered_text_right, NK_WIDGET_ALIGN_CENTERED | NK_WIDGET_ALIGN_MIDDLE, NK_TEXT_RIGHT);
-                nk_checkbox_label_align(ctx, "CheckRight TextRight", &checkbox_right_text_right, NK_WIDGET_LEFT, NK_TEXT_RIGHT);
-                nk_checkbox_label_align(ctx, "CheckRight TextLeft", &checkbox_right_text_left, NK_WIDGET_RIGHT, NK_TEXT_LEFT);
-
                 nk_layout_row_static(ctx, 30, 80, 3);
                 option_left = nk_option_label(ctx, "optionA", option_left == A) ? A : option_left;
                 option_left = nk_option_label(ctx, "optionB", option_left == B) ? B : option_left;
                 option_left = nk_option_label(ctx, "optionC", option_left == C) ? C : option_left;
 
                 nk_layout_row_static(ctx, 30, 80, 3);
-                option_right = nk_option_label_align(ctx, "optionA", option_right == A, NK_WIDGET_RIGHT, NK_TEXT_RIGHT) ? A : option_right;
-                option_right = nk_option_label_align(ctx, "optionB", option_right == B, NK_WIDGET_RIGHT, NK_TEXT_RIGHT) ? B : option_right;
-                option_right = nk_option_label_align(ctx, "optionC", option_right == C, NK_WIDGET_RIGHT, NK_TEXT_RIGHT) ? C : option_right;
 
                 nk_layout_row(ctx, NK_STATIC, 30, 2, ratio);
                 nk_labelf(ctx, NK_TEXT_LEFT, "Slider int");
@@ -304,9 +293,9 @@ overview(struct nk_context *ctx)
 
                 nk_layout_row(ctx, NK_STATIC, 40, 2, ratio);
                 nk_labelf(ctx, NK_TEXT_LEFT, "Knob int: %d", int_knob);
-                nk_knob_int(ctx, 0, &int_knob, 10, 1, NK_DOWN, 60.0f);
+                // nk_knob_int(ctx, 0, &int_knob, 10, 1, NK_DOWN, 60.0f);
                 nk_labelf(ctx, NK_TEXT_LEFT, "Knob float: %.2f", float_knob);
-                nk_knob_float(ctx, 0, &float_knob, 5.0, 0.5f, NK_DOWN, 60.0f);
+                // nk_knob_float(ctx, 0, &float_knob, 5.0, 0.5f, NK_DOWN, 60.0f);
 
                 nk_layout_row(ctx, NK_STATIC, 25, 2, ratio);
                 nk_label(ctx, "Property float:", NK_TEXT_LEFT);
@@ -343,13 +332,13 @@ overview(struct nk_context *ctx)
                 nk_layout_row_static(ctx, 30, 80, 1);
                 if (inactive)
                 {
-                    nk_widget_disable_begin(ctx);
+                    //  nk_widget_disable_begin(ctx);
                 }
 
                 if (nk_button_label(ctx, "button"))
                     fprintf(stdout, "button pressed\n");
 
-                nk_widget_disable_end(ctx);
+                // nk_widget_disable_end(ctx);
 
                 nk_tree_pop(ctx);
             }
@@ -719,7 +708,7 @@ overview(struct nk_context *ctx)
                 nk_layout_row_dynamic(ctx, 12, 1);
                 nk_label(ctx, "Use this to subdivide spaces visually", NK_TEXT_LEFT);
                 nk_layout_row_dynamic(ctx, 4, 1);
-                nk_rule_horizontal(ctx, nk_white, nk_true);
+                // nk_rule_horizontal(ctx, nk_white, nk_true);
                 nk_layout_row_dynamic(ctx, 75, 1);
                 nk_label_wrap(ctx, "Best used in 'Card'-like layouts, with a bigger title font on top. Takes on the size of the previous layout definition. Rounding optional.");
                 nk_tree_pop(ctx);
@@ -755,7 +744,7 @@ overview(struct nk_context *ctx)
             nk_layout_row_dynamic(ctx, 15, 1);
             nk_checkbox_label(ctx, "Show markers", &show_markers);
             nk_layout_row_dynamic(ctx, 100, 1);
-            ctx->style.chart.show_markers = show_markers;
+            // ctx->style.chart.show_markers = show_markers;
             if (nk_chart_begin(ctx, NK_CHART_LINES, 32, -1.0f, 1.0f))
             {
                 for (i = 0; i < 32; ++i)
@@ -1477,7 +1466,9 @@ overview(struct nk_context *ctx)
             nk_tree_pop(ctx);
         }
         if (disable_widgets)
-            nk_widget_disable_end(ctx);
+        {
+            // nk_widget_disable_end(ctx);
+        }
     }
     nk_end(ctx);
     return !nk_window_is_closed(ctx, "Overview");
